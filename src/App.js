@@ -22,6 +22,7 @@ const App = () => {
 
     }, []);
 
+
      if (
          pr.name === 'John' && pr.lastname === 'Johns'
      )
@@ -29,11 +30,10 @@ const App = () => {
      {
          return <MainPage user={pr}/>
 
+     } else {
+         return <ErrorPage user={pr}/>
      }
 
-     else {
-        return <ErrorPage user={pr}/>
-     }
 
 
 };

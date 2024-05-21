@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './ErrorPage.module.css';
 
 const ErrorPage = ({user}) => {
     return (
-        <div>
-            ошибка!!!!! {user.name} {user.lastname}
+        <div className={styles.error}>
+            ERROR!!! {user.name} {user.lastname}
         </div>
     );
 };
