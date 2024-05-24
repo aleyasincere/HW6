@@ -1,41 +1,71 @@
-import React, {useEffect, useState} from 'react';
-import MainPage from "./pages/mainPage/MainPage";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import React, {useState} from 'react';
+
+function App ()  {
 
 
-const App = () => {
+    const [add, setAdd] = useState('');
 
-    const [pr, setPr] = useState({
-        name: '', lastname: ''
-    });
+    const [user, setUser] = useState([]);
 
-    useEffect(() => {
-        const nameLol = prompt('What is your name?');
-        const lastnameLol = prompt('What is your last name?');
-        if (
-            nameLol !== null && lastnameLol !== null
-        ){
-            setPr (
-                {name: nameLol, lastname: lastnameLol}
-            )
-        }
+    function handleChange(event) {
+        setAdd(event.target.value);
+    }
 
-    }, []);
+    function dobavit (){
+        setUser([...user, add])
+        setAdd('')
+    }
 
-
-     if (
-         pr.name === 'John' && pr.lastname === 'Johns'
-     )
-
-     {
-         return <MainPage user={pr}/>
-
-     } else {
-         return <ErrorPage user={pr}/>
-     }
+    function change (id) {
+        const massiv = [ ...user ]
+        massiv[id] = add;
+        setUser(massiv);
+        setAdd('')
+    }
 
 
 
-};
+    return (
+        <div className="App">
+            <input className="App-Input" onChange={
+                (event) => {
+                    handleChange(event);
+                } }
+                   value={ add } type="text" placeholder="Enter username" />
+            <button
+               disabled={!add} onClick={dobavit} type="button">Добавить</button>
+            {
+                user.length > 0 ? (user.map((element, id ) =>
+                    (<div  key={ id }>
+                        <p>{element}</p>
+                        <button onClick={()=> {
+                            change(id)
+                        }}
+                                disabled={!add}>Поменять</button>
+                    </div>))): (<p>список пуст</p>)
+            }
+        </div>
+    )
+
+
+}
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
