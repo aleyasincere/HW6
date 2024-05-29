@@ -1,0 +1,27 @@
+.App {
+    padding: 150px;
+}
+
+
+.form input {
+    outline: none;
+}
+
+
+.form .error {
+    border: 1px solid red;
+}
+
+.form small {
+    color: red;
+}
+
+.form {
+    width: 400px;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
